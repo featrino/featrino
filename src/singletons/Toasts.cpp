@@ -198,14 +198,14 @@ void Toasts::sendWindowsNotification(const QString &channelName, Platform p)
         templ.setAudioOption(
             WinToastLib::WinToastTemplate::AudioOption::Silent);
     }
-    WinToastLib::WinToast::instance()->setAppName(L"Chatterino2");
+    WinToastLib::WinToast::instance()->setAppName(L"featrino");
     int mbstowcs(wchar_t * aumi_version, const char *CHATTERINO_VERSION,
                  size_t size);
     std::string(CHATTERINO_VERSION);
     std::wstring aumi_version =
         std::wstring(CHATTERINO_VERSION.begin(), CHATTERINO_VERSION.end());
     WinToastLib::WinToast::instance()->setAppUserModelId(
-        WinToastLib::WinToast::configureAUMI(L"", L"Chatterino 2", L"",
+        WinToastLib::WinToast::configureAUMI(L"", L"featrino", L"",
                                              aumi_version));
     WinToastLib::WinToast::instance()->initialize();
     WinToastLib::WinToast::instance()->showToast(

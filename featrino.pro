@@ -25,7 +25,7 @@ CONFIG            += communi
 COMMUNI           += core model util
 
 INCLUDEPATH       += src/
-TARGET             = chatterino
+TARGET             = featrino
 TEMPLATE           = app
 PRECOMPILED_HEADER = src/PrecompiledHeader.hpp
 CONFIG            += precompile_header
@@ -68,7 +68,7 @@ macx {
 
 # https://bugreports.qt.io/browse/QTBUG-27018
 equals(QMAKE_CXX, "clang++")|equals(QMAKE_CXX, "g++") {
-    TARGET = bin/chatterino
+    TARGET = bin/featrino
 }
 
 # Icons

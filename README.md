@@ -32,4 +32,8 @@ git submodule update --init --recursive
 ```
 
 
+## License
+
+As with the original repo all work is under the MIT license.
+Thus you are free to do what you want as long as you state its copyright notice.
 
