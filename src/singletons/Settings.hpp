@@ -343,6 +343,9 @@ public:
     QStringSetting preferredQuality = {"/external/streamlink/quality",
                                        "Choose"};
     QStringSetting streamlinkOpts = {"/external/streamlink/options", ""};
+    BoolSetting streamlinkOptsLatency = {"/external/streamlink/optionsLatency",
+                                         false};
+    BoolSetting streamlinkOptsAds = {"/external/streamlink/optionsAds", false};
 
     // Custom URI Scheme
     QStringSetting customURIScheme = {"/external/urischeme"};

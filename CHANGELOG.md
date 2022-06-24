@@ -1,5 +1,12 @@
 # Changelog
 
+
+## featrino
+
+- Minor: Add link to streamlink documentation and quick toggles for useful options (#3810)
+
+
+
 ## Unversioned
 
 - Major: Added multi-channel searching to search dialog via keyboard shortcut. [Ctrl+Shift+F by default] (#3694)
