@@ -14,7 +14,7 @@ If the feature breaks, it will be reverted to ensure that it doesn't fall behind
 - attached player
 - longer message history (done)
 - faster startup for live status (done)
-- 4x emotes
+- 4x emote support (done)
 
 
 ## Building
