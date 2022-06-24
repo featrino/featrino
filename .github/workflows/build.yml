@@ -47,13 +47,13 @@ jobs:
           path: "${{ github.workspace }}/qt/"
           key: ${{ runner.os }}-QtCache-${{ matrix.qt-version }}
 
-      # # LINUX
-      # - name: Install Qt
-      #   uses: jurplel/install-qt-action@v2
-      #   with:
-      #     cached: ${{ steps.cache-qt.outputs.cache-hit }}
-      #     version: ${{ matrix.qt-version }}
-      #     dir: "${{ github.workspace }}/qt/"
+      # LINUX
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          cached: ${{ steps.cache-qt.outputs.cache-hit }}
+          version: ${{ matrix.qt-version }}
+          dir: "${{ github.workspace }}/qt/"
 
       # WINDOWS
       - name: Cache conan packages part 1
