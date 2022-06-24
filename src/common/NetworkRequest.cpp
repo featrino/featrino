@@ -182,7 +182,7 @@ void NetworkRequest::execute()
 
 void NetworkRequest::initializeDefaultValues()
 {
-    const auto userAgent = QString("chatterino/%1 (%2)")
+    const auto userAgent = QString("featrino/%1 (%2)")
                                .arg(CHATTERINO_VERSION, CHATTERINO_GIT_HASH)
                                .toUtf8();
 

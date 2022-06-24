@@ -12,8 +12,8 @@ If the feature breaks, it will be reverted to ensure that it doesn't fall behind
 
 - 7tv emotes
 - attached player
-- longer message history
-- faster startup
+- longer message history (done)
+- faster startup for live status (done)
 - 4x emotes
 
 
