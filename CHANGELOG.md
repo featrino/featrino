@@ -5,6 +5,7 @@
 
 - Minor: Add link to streamlink documentation and quick toggles for useful options (#3810)
 - Minor: Speed up program loading time GO FAST (#3813)
+- Minor: Added ability to keep longer channel message history on-screen or for logs (#3811)
 
 
 
