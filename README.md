@@ -1,4 +1,4 @@
-![alt text](https://fourtf.com/img/chatterino-icon-64.png)
+![alt text](resources/icon-64.png)
 featrino
 ============
 
