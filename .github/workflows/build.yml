@@ -92,31 +92,31 @@ jobs:
             qmake ..
             set cl=/MP
             nmake /S /NOLOGO
-            windeployqt release/chatterino.exe --release --no-compiler-runtime --no-translations --no-opengl-sw --dir Chatterino2/
-            cp release/chatterino.exe Chatterino2/
-            echo nightly > Chatterino2/modes
-            7z a chatterino-windows-x86-64.zip Chatterino2/
+            windeployqt release/featrino.exe --release --no-compiler-runtime --no-translations --no-opengl-sw --dir featrino/
+            cp release/featrino.exe featrino/
+            echo nightly > featrino/modes
+            7z a featrino-windows-x86-64.zip featrino/
             
-      - name: Build with CMake (Windows)
-        if: startsWith(matrix.os, 'windows') && matrix.build-system == 'cmake'
-        run: |
-            mkdir build
-            cd build
-            conan install ..  -b missing
-            cmake -G"NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DUSE_CONAN=ON ..
-            set cl=/MP
-            nmake /S /NOLOGO
-            windeployqt bin/chatterino.exe --release --no-compiler-runtime --no-translations --no-opengl-sw --dir Chatterino2/
-            cp bin/chatterino.exe Chatterino2/
-            echo nightly > Chatterino2/modes
-            7z a chatterino-windows-x86-64.zip Chatterino2/
+      # - name: Build with CMake (Windows)
+      #   if: startsWith(matrix.os, 'windows') && matrix.build-system == 'cmake'
+      #   run: |
+      #       mkdir build
+      #       cd build
+      #       conan install ..  -b missing
+      #       cmake -G"NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DUSE_CONAN=ON ..
+      #       set cl=/MP
+      #       nmake /S /NOLOGO
+      #       windeployqt bin/chatterino.exe --release --no-compiler-runtime --no-translations --no-opengl-sw --dir Chatterino2/
+      #       cp bin/chatterino.exe Chatterino2/
+      #       echo nightly > Chatterino2/modes
+      #       7z a chatterino-windows-x86-64.zip Chatterino2/
 
       - name: Upload artifact (Windows)
         if: startsWith(matrix.os, 'windows')
         uses: actions/upload-artifact@v3
         with:
-          name: chatterino-windows-x86-64-${{ matrix.qt-version }}-${{ matrix.build-system }}.zip
-          path: build/chatterino-windows-x86-64.zip
+          name: featrino-windows-x86-64-${{ matrix.qt-version }}-${{ matrix.build-system }}.zip
+          path: build/featrino-windows-x86-64.zip
 
       - name: Clean Conan pkgs
         if: startsWith(matrix.os, 'windows')
@@ -248,7 +248,7 @@ jobs:
   create-release:
     needs: build
     runs-on: ubuntu-latest
-    if: (github.event_name == 'push' && github.ref == 'refs/heads/master')
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/featrino')
 
     steps:
       - name: Create release
@@ -266,7 +266,7 @@ jobs:
 
       - uses: actions/download-artifact@v3
         with:
-          name: chatterino-windows-x86-64-5.15.2-qmake.zip
+          name: featrino-windows-x86-64-5.15.2-qmake.zip
           path: windows/
 
       # - uses: actions/download-artifact@v3
@@ -317,8 +317,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./windows/chatterino-windows-x86-64.zip
-          asset_name: chatterino-windows-x86-64.zip
+          asset_path: ./windows/featrino-windows-x86-64.zip
+          asset_name: featrino-windows-x86-64.zip
           asset_content_type: application/zip
 
       # - name: Upload release asset (Windows) CMake
