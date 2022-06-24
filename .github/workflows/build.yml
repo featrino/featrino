@@ -21,11 +21,11 @@ jobs:
         qt-version: [5.15.2] # [5.15.2, 5.12.12]
         build-system: [qmake] # [qmake, cmake]
         pch: [true]
-        include:
-          - os: ubuntu-latest
-            qt-version: 5.15.2
-            build-system: cmake
-            pch: false
+        # include:
+        #   - os: ubuntu-latest
+        #     qt-version: 5.15.2
+        #     build-system: cmake
+        #     pch: false
       fail-fast: false
 
     steps:

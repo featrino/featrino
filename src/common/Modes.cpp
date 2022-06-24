@@ -24,6 +24,11 @@ Modes::Modes()
         {
             this->isPortable = true;
         }
+        // There is no "stable" featrino, Chatterino stable is always
+        // very outdated and potentially less stable than nightly.
+        // This also disables updates to make sure that we don't
+        // apply upstream updates from Chatterino
+        this->isNightly = true;
     }
 }
 

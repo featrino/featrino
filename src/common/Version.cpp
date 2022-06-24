@@ -25,11 +25,11 @@ Version::Version()
         QString(FROM_EXTERNAL_DEFINE(CHATTERINO_CMAKE_GEN_DATE)).remove('"');
 #endif
 
-    this->fullVersion_ = "Chatterino ";
-    if (Modes::instance().isNightly)
-    {
-        this->fullVersion_ += "Nightly ";
-    }
+    this->fullVersion_ = "featrino ";
+    //if (Modes::instance().isNightly)
+    //{
+    //    this->fullVersion_ += "Nightly ";
+    //}
 
     this->fullVersion_ += this->version_;
 
@@ -38,7 +38,8 @@ Version::Version()
 #endif
 
 #if defined(Q_OS_WIN) || defined(Q_OS_LINUX) || defined(Q_OS_MACOS)
-    this->isSupportedOS_ = true;
+    //this->isSupportedOS_ = true;
+    this->isSupportedOS_ = false;
 #else
     this->isSupportedOS_ = false;
 #endif
@@ -122,7 +123,7 @@ void Version::generateBuildString()
     // Add commit information
     s +=
         QString(
-            R"( (commit <a href="https://github.com/Chatterino/chatterino2/commit/%1">%1</a>)")
+            R"( (commit <a href="https://github.com/featrino/featrino/commit/%1">%1</a>)")
             .arg(this->commitHash());
     if (this->isModified())
     {
