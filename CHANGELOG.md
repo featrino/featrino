@@ -4,6 +4,7 @@
 ## featrino
 
 - Minor: Add link to streamlink documentation and quick toggles for useful options (#3810)
+- Minor: Speed up program loading time GO FAST (#3813)
 
 
 
