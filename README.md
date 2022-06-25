@@ -18,9 +18,11 @@ If the feature breaks, it will be reverted to ensure that the project doesn't fa
 
 ## Future Ideas
 
-- Built in video player (MPV+streamlink) for viewing stream
 - Live preview of stream, or more recent stream previews on hover
-- Notes for users (better implementation of [this](https://github.com/Chatterino/chatterino2/pull/3745))
+- Notes for users (better implementation of [this](https://github.com/Chatterino/chatterino2/pull/3745), use tabs)
+- Spellcheck (english only) for messages and notes
+- Support for prediction gamba when they happen (badges are already shown)
+- List top 20 emotes that a user uses (in emote menu or `:` dialog)
 
 
 ## Building
