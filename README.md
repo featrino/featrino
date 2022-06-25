@@ -4,19 +4,19 @@ featrino
 
 A fork of [chatterino2](https://github.com/Chatterino/chatterino2/) with the aim of allow more features.
 Goal is to always keep up to date with the master, while also including any feature users want and works.
-Feel free to make a PR and will be merged if it works.
-If the feature breaks, it will be reverted to ensure that it doesn't fall behind in functionality.
+Feel free to make any feature PR and it will be merged if it works.
+If the feature breaks, it will be reverted to ensure that the project doesn't fall behind master.
 
 
-## Features (todo)
+## Features
 
-- Longer message history (done)
-- Faster startup for live status (done)
-- 4x emote support for FFZ (done)
-- 7tv emote and animated profiles (done, taken from [chatterino7](https://github.com/SevenTV/chatterino7)) 
+- Longer message history for user logs
+- Faster startup for live status
+- 4x emote support for FFZ and 7TV
+- 7tv emote and animated profiles (from [chatterino7](https://github.com/SevenTV/chatterino7)) 
 
 
-## Ideas
+## Future Ideas
 
 - Built in video player (MPV+streamlink) for viewing stream
 - Live preview of stream, or more recent stream previews on hover
