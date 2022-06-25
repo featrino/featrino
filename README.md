@@ -11,10 +11,14 @@ If the feature breaks, it will be reverted to ensure that it doesn't fall behind
 ## Features (todo)
 
 - 7tv emotes
-- attached player
-- longer message history (done)
-- faster startup for live status (done)
-- 4x emote support (done)
+- Longer message history (done)
+- Faster startup for live status (done)
+- 4x emote support for FFZ (done)
+
+## Ideas
+
+- Built in video player (MPV+streamlink) for viewing stream
+- Live preview of stream, or more recent stream previews on hover
 
 
 ## Building

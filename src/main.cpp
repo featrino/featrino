@@ -23,9 +23,9 @@ int main(int argc, char **argv)
 {
     QApplication a(argc, argv);
 
-    QCoreApplication::setApplicationName("chatterino");
+    QCoreApplication::setApplicationName("featrino");
     QCoreApplication::setApplicationVersion(CHATTERINO_VERSION);
-    QCoreApplication::setOrganizationDomain("https://www.chatterino.com");
+    QCoreApplication::setOrganizationDomain("https://featrino.com");
 
     Paths *paths{};
 
