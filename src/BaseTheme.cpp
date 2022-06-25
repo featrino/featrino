@@ -102,7 +102,7 @@ void AB_THEME_CLASS::actuallyUpdate(double hue, double multiplier)
                 {highlighted, highlighted, highlighted}};
             this->tabs.selected = {
                 QColor("#000"),
-                {QColor("#b4d7ff"), QColor("#b4d7ff"), QColor("#b4d7ff")},
+                {QColor("#f7e5a3"), QColor("#f7e5a3"), QColor("#f7e5a3")},
                 {this->accent, this->accent, this->accent}};
         }
         else

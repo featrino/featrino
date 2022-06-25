@@ -22,7 +22,7 @@ QScrollArea QFrame {
 
 QComboBox QFrame {
     background: #000;
-    border: 1px solid #66BCFF;
+    border: 1px solid #efbb00;
 }
 
 chatterino--SettingsDialog chatterino--SettingsDialogTab {
@@ -41,13 +41,13 @@ chatterino--PageHeader {
 chatterino--TitleLabel {
     font-family: "Segoe UI light";
     font-size: 24px;
-    color: #4FC3F7; /* Should this be same as accent color? */
+    color: #efbb00; /* Should this be same as accent color? */
 }
 
 chatterino--SubtitleLabel {
     font-family: "Segoe UI light";
     font-size: 16px;
-    color: #4FC3F7; /* Should this be same as accent color? */
+    color: #efbb00; /* Should this be same as accent color? */
 }
 
 chatterino--DescriptionLabel {
@@ -57,5 +57,5 @@ chatterino--DescriptionLabel {
 chatterino--NavigationLabel {
     font-family: "Segoe UI light";
     font-size: 15px;
-    color: #A6DDF4;
+    color: #f4eaa6;
 }
