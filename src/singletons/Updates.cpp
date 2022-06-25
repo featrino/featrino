@@ -254,9 +254,8 @@ void Updates::checkForUpdates()
         return;
     }
 
-    QString url =
-        "https://notitia.chatterino.com/version/chatterino/" CHATTERINO_OS "/" +
-        currentBranch();
+    //QString url = "" CHATTERINO_OS "/" + currentBranch();
+    QString url = "";
 
     NetworkRequest(url)
         .timeout(60000)

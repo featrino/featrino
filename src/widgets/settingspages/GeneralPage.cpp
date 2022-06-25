@@ -6,6 +6,8 @@
 
 #include "Application.hpp"
 #include "common/Version.hpp"
+#include "providers/twitch/TwitchChannel.hpp"
+#include "providers/twitch/TwitchIrcServer.hpp"
 #include "singletons/Fonts.hpp"
 #include "singletons/NativeMessaging.hpp"
 #include "singletons/Paths.hpp"
@@ -316,6 +318,23 @@ void GeneralPage::initLayout(GeneralPageView &layout)
 
     layout.addCheckbox("Remove spaces between emotes",
                        s.removeSpacesBetweenEmotes);
+    layout.addCheckbox("Show unlisted / unapproved emotes (7TV only)",
+                       s.showUnlistedEmotes);
+    s.showUnlistedEmotes.connect(
+        []() {
+            getApp()->twitch->forEachChannelAndSpecialChannels(
+                [](const auto &c) {
+                    if (c->isTwitchChannel())
+                    {
+                        auto channel = dynamic_cast<TwitchChannel *>(c.get());
+                        if (channel != nullptr)
+                        {
+                            channel->refresh7TVChannelEmotes(false);
+                        }
+                    }
+                });
+        },
+        false);
     layout.addDropdown<int>(
         "Show info on hover", {"Don't show", "Always show", "Hold shift"},
         s.emotesTooltipPreview,
@@ -591,6 +610,7 @@ void GeneralPage::initLayout(GeneralPageView &layout)
     layout.addCheckbox("Subscriber ", s.showBadgesSubscription);
     layout.addCheckbox("Vanity (prime, bits, subgifter)", s.showBadgesVanity);
     layout.addCheckbox("Chatterino", s.showBadgesChatterino);
+    layout.addCheckbox("SevenTV", s.showBadgesSeventv);
     layout.addCheckbox("FrankerFaceZ (Bot, FFZ Supporter, FFZ Developer)",
                        s.showBadgesFfz);
     layout.addSeperator();
@@ -618,6 +638,8 @@ void GeneralPage::initLayout(GeneralPageView &layout)
     }
 #endif
 
+    layout.addCheckbox("Show 7TV Animated Profile Picture",
+                       s.displaySevenTVAnimatedProfile);
     layout.addCheckbox("Show moderation messages", s.hideModerationActions,
                        true);
     layout.addCheckbox("Show deletions of single messages",

@@ -10,15 +10,17 @@ If the feature breaks, it will be reverted to ensure that it doesn't fall behind
 
 ## Features (todo)
 
-- 7tv emotes
 - Longer message history (done)
 - Faster startup for live status (done)
 - 4x emote support for FFZ (done)
+- 7tv emote and animated profiles (done, taken from [chatterino7](https://github.com/SevenTV/chatterino7)) 
+
 
 ## Ideas
 
 - Built in video player (MPV+streamlink) for viewing stream
 - Live preview of stream, or more recent stream previews on hover
+- Notes for users (better implementation of [this](https://github.com/Chatterino/chatterino2/pull/3745))
 
 
 ## Building

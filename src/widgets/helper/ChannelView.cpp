@@ -109,7 +109,11 @@ namespace {
                                 });
         };
 
-        if (creatorFlags.has(MessageElementFlag::BttvEmote))
+        if (creatorFlags.has(MessageElementFlag::SeventvEmote))
+        {
+            addPageLink("7TV");
+        }
+        else if (creatorFlags.has(MessageElementFlag::BttvEmote))
         {
             addPageLink("BTTV");
         }
