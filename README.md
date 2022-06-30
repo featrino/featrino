@@ -16,6 +16,7 @@ If the feature breaks, it will be reverted to ensure that the project doesn't fa
 - 7tv emote and animated profiles (from [chatterino7](https://github.com/SevenTV/chatterino7) commit [c74a082](https://github.com/SevenTV/chatterino7/commits/c74a0824e491e6f488f5f3ba5a83b89c4fded2e1)) 
 
 
+
 ## Future Ideas
 
 - Live preview of stream, or more recent stream previews on hover
@@ -23,6 +24,7 @@ If the feature breaks, it will be reverted to ensure that the project doesn't fa
 - Spellcheck (english only) for messages and notes
 - Support for prediction gamba when they happen (badges are already shown)
 - List top 20 emotes that a user uses (in emote menu or `:` dialog)
+
 
 
 ## Building
