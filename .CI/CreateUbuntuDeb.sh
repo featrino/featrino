@@ -7,7 +7,7 @@ if [ ! -f ./bin/featrino ] || [ ! -x ./bin/featrino ]; then
 fi
 
 # chatterino_version=$(git describe --tags | cut -c 2-)
-chatterino_version="0.0.3 (2.3.5-0ab53d6)"
+chatterino_version="0.0.3"
 echo "Found featrino version $chatterino_version via git"
 
 rm -vrf "./package" || true  # delete any old packaging dir

@@ -32,6 +32,6 @@
         <binary>featrino</binary>
     </provides>
     <releases>
-        <release version="0.0.3 (2.3.5-0ab53d6)" date="2022-04-05"/>
+        <release version="0.0.3" date="2022-04-05"/>
     </releases>
 </component>
