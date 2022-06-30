@@ -13,7 +13,7 @@ If the feature breaks, it will be reverted to ensure that the project doesn't fa
 - Longer message history for user logs
 - Faster startup for live status
 - 4x emote support for FFZ and 7TV
-- 7tv emote and animated profiles (from [chatterino7](https://github.com/SevenTV/chatterino7)) 
+- 7tv emote and animated profiles (from [chatterino7](https://github.com/SevenTV/chatterino7) commit [c74a082](https://github.com/SevenTV/chatterino7/commits/c74a0824e491e6f488f5f3ba5a83b89c4fded2e1)) 
 
 
 ## Future Ideas
