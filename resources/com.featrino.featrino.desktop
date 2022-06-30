@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Version=1.0
+Version=0.0.3
 Name=featrino
 Comment=Chat client for Twitch
 Exec=featrino

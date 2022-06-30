@@ -617,12 +617,12 @@ if (BUILD_APP)
                 ARCHIVE DESTINATION lib/static
                 )
 
-        install(FILES ${CMAKE_SOURCE_DIR}/resources/com.chatterino.chatterino.desktop
+        install(FILES ${CMAKE_SOURCE_DIR}/resources/com.featrino.featrino.desktop
                 DESTINATION share/applications
                 )
 
         install(FILES ${CMAKE_SOURCE_DIR}/resources/icon.png
-                RENAME com.chatterino.chatterino.png
+                RENAME com.featrino.featrino.png
                 DESTINATION share/icons/hicolor/256x256/apps
                 )
     endif ()
