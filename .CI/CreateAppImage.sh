@@ -2,8 +2,8 @@
 
 set -e
 
-if [ ! -f ./bin/chatterino ] || [ ! -x ./bin/chatterino ]; then
-    echo "ERROR: No chatterino binary file found. This script must be run in the build folder, and chatterino must be built first."
+if [ ! -f ./bin/featrino ] || [ ! -x ./bin/featrino ]; then
+    echo "ERROR: No featrino binary file found. This script must be run in the build folder, and featrino must be built first."
     exit 1
 fi
 
@@ -16,15 +16,15 @@ chatterino_dir=$(dirname "$script_dir")
 
 qmake_path=$(command -v qmake)
 
-echo "Running LDD on chatterino binary:"
-ldd ./bin/chatterino
+echo "Running LDD on featrino binary:"
+ldd ./bin/featrino
 echo ""
 
 echo "Running make install in the appdir"
 make INSTALL_ROOT=appdir -j"$(nproc)" install ; find appdir/
 echo ""
 
-cp "$chatterino_dir"/resources/icon.png ./appdir/chatterino.png
+cp "$chatterino_dir"/resources/icon.png ./appdir/featrino.png
 
 linuxdeployqt_path="linuxdeployqt-6-x86_64.AppImage"
 linuxdeployqt_url="https://github.com/probonopd/linuxdeployqt/releases/download/6/linuxdeployqt-6-x86_64.AppImage"
@@ -55,7 +55,7 @@ echo '#!/bin/sh
 here="$(dirname "$(readlink -f "${0}")")"
 export QT_QPA_PLATFORM_PLUGIN_PATH="$here/usr/plugins"
 cd "$here/usr"
-exec "$here/usr/bin/chatterino" "$@"' > appdir/AppRun
+exec "$here/usr/bin/featrino" "$@"' > appdir/AppRun
 chmod a+x appdir/AppRun
 
 ./appimagetool-x86_64.AppImage appdir
