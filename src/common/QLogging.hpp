@@ -27,6 +27,7 @@ Q_DECLARE_LOGGING_CATEGORY(chatterinoStreamlink);
 Q_DECLARE_LOGGING_CATEGORY(chatterinoStreamerMode);
 Q_DECLARE_LOGGING_CATEGORY(chatterinoTokenizer);
 Q_DECLARE_LOGGING_CATEGORY(chatterinoTwitch);
+Q_DECLARE_LOGGING_CATEGORY(chatterinoTwitchPoints);
 Q_DECLARE_LOGGING_CATEGORY(chatterinoUpdate);
 Q_DECLARE_LOGGING_CATEGORY(chatterinoWebsocket);
 Q_DECLARE_LOGGING_CATEGORY(chatterinoWidget);

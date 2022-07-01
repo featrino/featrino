@@ -220,6 +220,7 @@ SOURCES += \
     src/providers/seventv/SeventvEmotes.cpp \
     src/providers/seventv/SeventvPaints.cpp \
     src/providers/twitch/api/Helix.cpp \
+    src/providers/twitch/api/GQL.cpp \
     src/providers/twitch/ChannelPointReward.cpp \
     src/providers/twitch/IrcMessageHandler.cpp \
     src/providers/twitch/PubSubActions.cpp \
@@ -242,6 +243,7 @@ SOURCES += \
     src/providers/twitch/TwitchIrcServer.cpp \
     src/providers/twitch/TwitchMessageBuilder.cpp \
     src/providers/twitch/TwitchUser.cpp \
+    src/providers/twitch/TwitchPoints.cpp \
     src/RunGui.cpp \
     src/singletons/Badges.cpp \
     src/singletons/Emotes.cpp \
@@ -485,6 +487,7 @@ HEADERS += \
     src/providers/seventv/SeventvEmotes.hpp \
     src/providers/seventv/SeventvPaints.hpp \
     src/providers/twitch/api/Helix.hpp \
+    src/providers/twitch/api/GQL.hpp \
     src/providers/twitch/ChannelPointReward.hpp \
     src/providers/twitch/ChatterinoWebSocketppLogger.hpp \
     src/providers/twitch/EmoteValue.hpp \
@@ -515,6 +518,7 @@ HEADERS += \
     src/providers/twitch/TwitchIrcServer.hpp \
     src/providers/twitch/TwitchMessageBuilder.hpp \
     src/providers/twitch/TwitchUser.hpp \
+    src/providers/twitch/TwitchPoints.hpp \
     src/RunGui.hpp \
     src/singletons/Badges.hpp \
     src/singletons/Emotes.hpp \

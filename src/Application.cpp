@@ -24,6 +24,7 @@
 #include "providers/twitch/PubSubManager.hpp"
 #include "providers/twitch/TwitchIrcServer.hpp"
 #include "providers/twitch/TwitchMessageBuilder.hpp"
+#include "providers/twitch/TwitchPoints.hpp"
 #include "singletons/Emotes.hpp"
 #include "singletons/Fonts.hpp"
 #include "singletons/Logging.hpp"
@@ -73,6 +74,7 @@ Application::Application(Settings &_settings, Paths &_paths)
     , notifications(&this->emplace<NotificationController>())
     , highlights(&this->emplace<HighlightController>())
     , twitch(&this->emplace<TwitchIrcServer>())
+    , twitchPoints(&this->emplace<TwitchPoints>())
     , chatterinoBadges(&this->emplace<ChatterinoBadges>())
     , seventvBadges(&this->emplace<SeventvBadges>())
     , seventvPaints(&this->emplace<SeventvPaints>())
@@ -151,6 +153,8 @@ void Application::initialize(Settings &settings, Paths &paths)
         this->initNm(paths);
     }
     this->initPubSub();
+
+    this->twitchPoints->run();
 }
 
 int Application::run(QApplication &qtApp)

@@ -4,6 +4,7 @@
 #include "common/QLogging.hpp"
 #include "providers/twitch/TwitchAccount.hpp"
 #include "providers/twitch/TwitchCommon.hpp"
+#include "providers/twitch/api/GQL.hpp"
 #include "providers/twitch/api/Helix.hpp"
 
 namespace chatterino {
@@ -148,6 +149,7 @@ void TwitchAccountManager::load()
             qCDebug(chatterinoTwitch)
                 << "Twitch user updated to" << newUsername;
             getHelix()->update(user->getOAuthClient(), user->getOAuthToken());
+            getGQL()->update("NEEDS TO BE THE USERS...");
             this->currentUser_ = user;
         }
         else

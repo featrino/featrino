@@ -10,6 +10,7 @@
 namespace chatterino {
 
 class TwitchIrcServer;
+class TwitchPoints;
 class PubSub;
 
 class CommandController;
@@ -86,6 +87,7 @@ public:
     NotificationController *const notifications{};
     HighlightController *const highlights{};
     TwitchIrcServer *const twitch{};
+    TwitchPoints *const twitchPoints{};
     ChatterinoBadges *const chatterinoBadges{};
     SeventvBadges *const seventvBadges{};
     SeventvPaints *const seventvPaints{};

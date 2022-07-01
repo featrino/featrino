@@ -11,11 +11,13 @@
 #include "common/QLogging.hpp"
 #include "common/Version.hpp"
 #include "providers/IvrApi.hpp"
+#include "providers/twitch/api/GQL.hpp"
 #include "providers/twitch/api/Helix.hpp"
 #include "singletons/Paths.hpp"
 #include "singletons/Settings.hpp"
 #include "util/AttachToConsole.hpp"
 #include "util/IncognitoBrowser.hpp"
+
 
 using namespace chatterino;
 
@@ -82,6 +84,7 @@ int main(int argc, char **argv)
 
         IvrApi::initialize();
         Helix::initialize();
+        GQL::initialize();
 
         Settings settings(paths->settingsDirectory);
 
