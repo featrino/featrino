@@ -149,7 +149,6 @@ void TwitchAccountManager::load()
             qCDebug(chatterinoTwitch)
                 << "Twitch user updated to" << newUsername;
             getHelix()->update(user->getOAuthClient(), user->getOAuthToken());
-            getGQL()->update("NEEDS TO BE THE USERS...");
             this->currentUser_ = user;
         }
         else

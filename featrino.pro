@@ -346,6 +346,7 @@ SOURCES += \
     src/widgets/settingspages/ModerationPage.cpp \
     src/widgets/settingspages/NicknamesPage.cpp \
     src/widgets/settingspages/NotificationPage.cpp \
+    src/widgets/settingspages/PointsPage.cpp \
     src/widgets/settingspages/SettingsPage.cpp \
     src/widgets/splits/ClosedSplits.cpp \
     src/widgets/splits/InputCompletionItem.cpp \
@@ -640,6 +641,7 @@ HEADERS += \
     src/widgets/settingspages/ModerationPage.hpp \
     src/widgets/settingspages/NicknamesPage.hpp \
     src/widgets/settingspages/NotificationPage.hpp \
+    src/widgets/settingspages/PointsPage.hpp \
     src/widgets/settingspages/SettingsPage.hpp \
     src/widgets/splits/ClosedSplits.hpp \
     src/widgets/splits/InputCompletionItem.hpp \

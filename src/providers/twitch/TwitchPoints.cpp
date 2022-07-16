@@ -14,6 +14,7 @@
 #include "widgets/splits/SplitContainer.hpp"
 
 #include <QCoreApplication>
+#include <QDateTime>
 #include <QFile>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -65,14 +66,18 @@ void TwitchPoints::TwitchPointsThread::run()
                 getGQL()->getUserPoints(
                     QString::fromUtf8(chan_name.c_str()),
                     [chan_name](int points) {
-                        qCWarning(chatterinoTwitchPoints)
-                            << "GOLDBATTLE: " << chan_name.c_str() << " has "
-                            << points;
+                        getApp()->twitchPoints->appendLog(
+                            {QDateTime::currentDateTime(),
+                             QString::fromUtf8(chan_name.c_str()),
+                             "Total of " + QString::number(points) +
+                                 " points"});
                     },
                     [chan_name]() {
-                        qCWarning(chatterinoTwitchPoints)
-                            << "GOLDBATTLE: " << chan_name.c_str()
-                            << " unable to get points";
+                        getApp()->twitchPoints->appendLog(
+                            {QDateTime::currentDateTime(),
+                             QString::fromUtf8(chan_name.c_str()),
+                             "Unable to retrieve points, is your oauth cookie "
+                             "right?"});
                     });
             }
         }

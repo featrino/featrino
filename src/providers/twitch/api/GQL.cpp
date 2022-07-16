@@ -12,6 +12,13 @@ static IGQL *instance = nullptr;
 void GQL::getUserPoints(QString userName, ResultCallback<int> successCallback,
                         GQLFailureCallback failureCallback)
 {
+    // oauth required...
+    if (this->oauthToken.isEmpty())
+    {
+        failureCallback();
+        return;
+    }
+
     QString query =
         "{\"operationName\": \"ChannelPointsContext\",\"variables\": { "
         "\"channelLogin\": \"" +
@@ -26,6 +33,13 @@ void GQL::getUserPoints(QString userName, ResultCallback<int> successCallback,
         .onSuccess([successCallback, failureCallback](auto result) -> Outcome {
             try
             {
+                // Ensure response is valid..
+                if (result.status() != 200)
+                {
+                    failureCallback();
+                    return Failure;
+                }
+                // Else parse the json
                 auto root = result.parseJson();
                 auto community =
                     root.value("data").toObject().value("community").toObject();

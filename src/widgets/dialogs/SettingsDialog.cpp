@@ -19,6 +19,7 @@
 #include "widgets/settingspages/ModerationPage.hpp"
 #include "widgets/settingspages/NicknamesPage.hpp"
 #include "widgets/settingspages/NotificationPage.hpp"
+#include "widgets/settingspages/PointsPage.hpp"
 
 #include <QDialogButtonBox>
 #include <QLineEdit>
@@ -188,6 +189,7 @@ void SettingsDialog::addTabs()
 
     // clang-format off
     this->addTab([]{return new GeneralPage;},          "General",        ":/settings/about.svg");
+    this->addTab([]{return new PointsPage;},           "Points",         ":/settings/coin.png");
     this->ui_.tabContainer->addSpacing(16);
     this->addTab([]{return new AccountsPage;},         "Accounts",       ":/settings/accounts.svg", SettingsTabId::Accounts);
     this->addTab([]{return new NicknamesPage;},        "Nicknames",      ":/settings/accounts.svg");
