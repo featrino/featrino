@@ -127,11 +127,9 @@ namespace {
 ChannelView::ChannelView(BaseWidget *parent)
     : BaseWidget(parent)
     , scrollBar_(new Scrollbar(this))
+    , messages_(getSettings()->twitchMessageOnScreenLimit)
 {
     this->setMouseTracking(true);
-
-    this->messages_ = std::make_shared<LimitedQueue<MessageLayoutPtr>>(
-        getSettings()->twitchMessageOnScreenLimit);
 
     this->initializeLayout();
     this->initializeScrollbar();
@@ -498,7 +496,7 @@ void ChannelView::updateScrollbar(
 void ChannelView::clearMessages()
 {
     // Clear all stored messages in this chat widget
-    this->messages_->clear();
+    this->messages_.clear();
     this->scrollBar_->clearHighlights();
     this->queueLayout();
 
@@ -578,7 +576,7 @@ LimitedQueueSnapshot<MessageLayoutPtr> &ChannelView::getMessagesSnapshot()
 {
     if (!this->paused() /*|| this->scrollBar_->isVisible()*/)
     {
-        this->snapshot_ = this->messages_->getSnapshot();
+        this->snapshot_ = this->messages_.getSnapshot();
     }
 
     return this->snapshot_;
@@ -711,7 +709,7 @@ void ChannelView::setChannel(ChannelPtr underlyingChannel)
             messageLayout->flags.set(MessageLayoutFlag::IgnoreHighlights);
         }
 
-        this->messages_->pushBack(MessageLayoutPtr(messageLayout));
+        this->messages_.pushBack(MessageLayoutPtr(messageLayout));
         if (this->showScrollbarHighlights())
         {
             this->scrollBar_->addHighlight(msg->getScrollBarHighlight());
@@ -817,7 +815,7 @@ void ChannelView::messageAppended(MessagePtr &message,
         loop.exec();
     }
 
-    if (this->messages_->pushBack(MessageLayoutPtr(messageRef)))
+    if (this->messages_.pushBack(MessageLayoutPtr(messageRef)))
     {
         if (this->paused())
         {
@@ -880,7 +878,7 @@ void ChannelView::messageAddedAtStart(std::vector<MessagePtr> &messages)
     }
 
     /// Add the messages at the start
-    if (this->messages_->pushFront(messageRefs).size() > 0)
+    if (this->messages_.pushFront(messageRefs).size() > 0)
     {
         if (this->scrollBar_->isAtBottom())
             this->scrollBar_->scrollToBottom();
@@ -923,7 +921,7 @@ void ChannelView::messageRemoveFromStart(MessagePtr &message)
 
 void ChannelView::messageReplaced(size_t index, MessagePtr &replacement)
 {
-    auto oMessage = this->messages_->get(index);
+    auto oMessage = this->messages_.get(index);
     if (!oMessage)
     {
         return;
@@ -932,6 +930,7 @@ void ChannelView::messageReplaced(size_t index, MessagePtr &replacement)
     auto message = *oMessage;
 
     MessageLayoutPtr newItem(new MessageLayout(replacement));
+
     if (message->flags.has(MessageLayoutFlag::AlternateBackground))
     {
         newItem->flags.set(MessageLayoutFlag::AlternateBackground);
@@ -940,13 +939,13 @@ void ChannelView::messageReplaced(size_t index, MessagePtr &replacement)
     this->scrollBar_->replaceHighlight(index,
                                        replacement->getScrollBarHighlight());
 
-    this->messages_->replaceItem(message, newItem);
+    this->messages_.replaceItem(message, newItem);
     this->queueLayout();
 }
 
 void ChannelView::updateLastReadMessage()
 {
-    if (auto lastMessage = this->messages_->last())
+    if (auto lastMessage = this->messages_.last())
     {
         this->lastReadMessage_ = *lastMessage;
     }

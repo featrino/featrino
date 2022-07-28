@@ -20,6 +20,7 @@
 - Minor: Adjust large stream thumbnail to 16:9 (#3655)
 - Minor: Fixed being unable to load Twitch Usercards from the `/mentions` tab. (#3623)
 - Minor: Add information about the user's operating system in the About page. (#3663)
+- Minor: Added ability to keep longer channel message history on-screen or for logs (#3811)
 - Minor: Added chatter count for each category in viewer list. (#3683, #3719)
 - Minor: Sorted usernames in /vips message to be case-insensitive. (#3696)
 - Minor: Strip leading @ and trailing , from usernames in the `/block` and `/unblock` commands. (#3816)
