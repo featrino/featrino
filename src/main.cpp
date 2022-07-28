@@ -86,7 +86,6 @@ int main(int argc, char **argv)
         GQL::initialize();
 
         Settings settings(paths->settingsDirectory);
-        getGQL()->update(settings.twitchGQLOAuth);
 
         runGui(a, *paths, settings);
     }

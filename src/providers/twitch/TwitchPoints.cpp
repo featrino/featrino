@@ -6,6 +6,7 @@
 #include "providers/twitch/TwitchIrcServer.hpp"
 #include "providers/twitch/api/GQL.hpp"
 #include "singletons/Paths.hpp"
+#include "singletons/Settings.hpp"
 #include "singletons/WindowManager.hpp"
 #include "util/PostToThread.hpp"
 #include "widgets/Notebook.hpp"
@@ -34,6 +35,10 @@ void TwitchPoints::run()
 
 void TwitchPoints::TwitchPointsThread::run()
 {
+    // load the last oauth
+    getGQL()->update(getSettings()->twitchGQLOAuth);
+
+    // loop till we end the program
     while (true)
     {
         try

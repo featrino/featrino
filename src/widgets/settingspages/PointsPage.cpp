@@ -61,6 +61,9 @@ PointsPage::PointsPage()
     // Log table of historical log information
     // TODO: should probably use a SLOT to handle live updating of logs...
     auto tableView = layout.emplace<QTableView>().getElement();
+    auto logs = app->twitchPoints->getLogs();
+    for (const auto &log : logs)
+        m_model.append(log);
     tableView->setModel(&m_model);
     //tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     tableView->horizontalHeader()->setStretchLastSection(true);
