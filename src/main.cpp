@@ -18,7 +18,6 @@
 #include "util/AttachToConsole.hpp"
 #include "util/IncognitoBrowser.hpp"
 
-
 using namespace chatterino;
 
 int main(int argc, char **argv)
@@ -87,6 +86,7 @@ int main(int argc, char **argv)
         GQL::initialize();
 
         Settings settings(paths->settingsDirectory);
+        getGQL()->update(settings.twitchGQLOAuth);
 
         runGui(a, *paths, settings);
     }

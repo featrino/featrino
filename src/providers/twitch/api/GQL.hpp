@@ -24,9 +24,10 @@ class IGQL
 {
 public:
     // https://github.com/lay295/TwitchChannelPoints/blob/master/TwitchChannelPoints/frmMain.cs#L151
-    virtual void getUserPoints(QString userName,
-                               ResultCallback<int> successCallback,
-                               GQLFailureCallback failureCallback) = 0;
+    virtual void getUserPoints(
+        QString userName,
+        ResultCallback<std::pair<int, QString>> successCallback,
+        GQLFailureCallback failureCallback) = 0;
 
     virtual void update(QString oauthToken) = 0;
 };
@@ -34,8 +35,9 @@ public:
 class GQL final : public IGQL
 {
 public:
-    // https://dev.twitch.tv/docs/api/reference#get-users
-    void getUserPoints(QString userName, ResultCallback<int> successCallback,
+    // https://github.com/lay295/TwitchChannelPoints/blob/master/TwitchChannelPoints/frmMain.cs#L151
+    void getUserPoints(QString userName,
+                       ResultCallback<std::pair<int, QString>> successCallback,
                        GQLFailureCallback failureCallback) final;
 
     void update(QString oauthToken) final;

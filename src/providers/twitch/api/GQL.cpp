@@ -9,7 +9,8 @@ namespace chatterino {
 
 static IGQL *instance = nullptr;
 
-void GQL::getUserPoints(QString userName, ResultCallback<int> successCallback,
+void GQL::getUserPoints(QString userName,
+                        ResultCallback<std::pair<int, QString>> successCallback,
                         GQLFailureCallback failureCallback)
 {
     // oauth required...
@@ -22,7 +23,7 @@ void GQL::getUserPoints(QString userName, ResultCallback<int> successCallback,
     QString query =
         "{\"operationName\": \"ChannelPointsContext\",\"variables\": { "
         "\"channelLogin\": \"" +
-        userName +
+        userName.toLower() +
         "\"}, \"extensions\": { "
         "\"persistedQuery\": { \"version\": 1, "
         "\"sha256Hash\": "
@@ -33,13 +34,11 @@ void GQL::getUserPoints(QString userName, ResultCallback<int> successCallback,
         .onSuccess([successCallback, failureCallback](auto result) -> Outcome {
             try
             {
-                // Ensure response is valid..
                 if (result.status() != 200)
                 {
                     failureCallback();
                     return Failure;
                 }
-                // Else parse the json
                 auto root = result.parseJson();
                 auto community =
                     root.value("data").toObject().value("community").toObject();
@@ -51,7 +50,13 @@ void GQL::getUserPoints(QString userName, ResultCallback<int> successCallback,
                                   .toObject()
                                   .value("balance")
                                   .toInt();
-                successCallback(points);
+                auto claim = self.value("communityPoints")
+                                 .toObject()
+                                 .value("availableClaim")
+                                 .toObject()
+                                 .value("id")
+                                 .toString();
+                successCallback({points, claim});
                 return Success;
             }
             catch (const std::exception &ex)

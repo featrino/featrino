@@ -50,8 +50,10 @@ PointsPage::PointsPage()
     auto formLayout = layout.emplace<QFormLayout>().getElement();
     formLayout->addRow("OAuth Cookie", &this->oauthTokenInput);
     oauthTokenInput.setEchoMode(QLineEdit::Password);
+    oauthTokenInput.setText(getSettings()->twitchGQLOAuth);
     connect(&this->oauthTokenInput, &QLineEdit::textChanged,
             [=](const QString &text) {
+                getSettings()->twitchGQLOAuth = text;
                 getGQL()->update(text);
             });
     layout->addSpacing(16);
@@ -69,7 +71,7 @@ void PointsPage::onShow()
     auto *app = getApp();
 
     m_model.clear();
-    
+
     auto logs = app->twitchPoints->getLogs();
     for (const auto &log : logs)
         m_model.append(log);

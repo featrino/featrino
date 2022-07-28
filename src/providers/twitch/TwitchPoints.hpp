@@ -53,7 +53,7 @@ private:
         void run() override;
 
     private:
-        //void handleMessage(const QJsonObject &root);
+        std::map<std::string, int> num_points;
     };
 
     TwitchIrcServer *twitch;
