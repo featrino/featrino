@@ -209,14 +209,16 @@ Split::Split(QWidget *parent)
             }
         });
 
-    this->input_->ui_.textEdit->focused.connect([this] {
-        // Forward textEdit's focused event
-        this->focused.invoke();
-    });
-    this->input_->ui_.textEdit->focusLost.connect([this] {
-        // Forward textEdit's focusLost event
-        this->focusLost.invoke();
-    });
+    this->signalHolder_.managedConnect(this->input_->ui_.textEdit->focused,
+                                       [this] {
+                                           // Forward textEdit's focused event
+                                           this->focused.invoke();
+                                       });
+    this->signalHolder_.managedConnect(this->input_->ui_.textEdit->focusLost,
+                                       [this] {
+                                           // Forward textEdit's focusLost event
+                                           this->focusLost.invoke();
+                                       });
     this->input_->ui_.textEdit->imagePasted.connect(
         [this](const QMimeData *source) {
             if (!getSettings()->imageUploaderEnabled)
@@ -699,6 +701,7 @@ void Split::setChannel(IndirectChannel newChannel)
     });
 
     this->channelChanged.invoke();
+    this->actionRequested.invoke(Action::RefreshTab);
 
     // Queue up save because: Split channel changed
     getApp()->windows->queueSave();
@@ -743,7 +746,6 @@ void Split::showChangeChannelPopup(const char *dialogTitle, bool empty,
         if (dialog->hasSeletedChannel())
         {
             this->setChannel(dialog->getSelectedChannel());
-            this->actionRequested.invoke(Action::RefreshTab);
         }
 
         callback(dialog->hasSeletedChannel());

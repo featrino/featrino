@@ -2,8 +2,9 @@
 
 Note on Qt version compatibility: If you are installing Qt from a package manager, please ensure the version you are installing is at least **Qt 5.15 or newer**.
 
-## Ubuntu 20.04
+## Install dependencies
 
+<<<<<<< HEAD:docs/BUILDING_ON_LINUX.md
 _Most likely works the same for other Debian-like distros_
 
 1. Install all of the dependencies using `sudo apt install qttools5-dev qtmultimedia5-dev qt5-image-formats-plugins libqt5svg5-dev libboost-dev libssl-dev libboost-system-dev libboost-filesystem-dev cmake g++`
@@ -39,43 +40,58 @@ _Most likely works the same for other Debian-like distros_
 1. Go into the project directory
 1. Create a build folder and go into it (`mkdir build && cd build`)
 1. Use one of the options below to compile it
+=======
+### Ubuntu 20.04
 
-### Using CMake
+_Most likely works the same for other Debian-like distros_
+>>>>>>> master:BUILDING_ON_LINUX.md
 
-`cmake .. && make`
+Install all of the dependencies using `sudo apt install qttools5-dev qtmultimedia5-dev libqt5svg5-dev libboost-dev libssl-dev libboost-system-dev libboost-filesystem-dev cmake g++`
 
-### Using QMake
+### Arch Linux
 
-`qmake .. && make`
+Install all of the dependencies using `sudo pacman -S --needed qt5-base qt5-multimedia qt5-svg qt5-tools gst-plugins-ugly gst-plugins-good boost rapidjson pkgconf openssl cmake`
 
-## Fedora 28 and above
+Alternatively you can use the [chatterino2-git](https://aur.archlinux.org/packages/chatterino2-git/) package to build and install Chatterino for you.
+
+### Fedora 28 and above
 
 _Most likely works the same for other Red Hat-like distros. Substitute `dnf` with `yum`._
 
+<<<<<<< HEAD:docs/BUILDING_ON_LINUX.md
 1. Install all of the dependencies using `sudo dnf install qt5-qtbase-devel qt5-qtmultimedia-devel qt5-qtimageformats-devel qt5-qtsvg-devel libsecret-devel openssl-devel boost-devel cmake`
 1. Go into the project directory
 1. Create a build folder and go into it (`mkdir build && cd build`)
 1. Use one of the options below to compile it
 
 ### Using CMake
+=======
+Install all of the dependencies using `sudo dnf install qt5-qtbase-devel qt5-qtmultimedia-devel qt5-qtsvg-devel qt5-linguist libsecret-devel openssl-devel boost-devel cmake`
+>>>>>>> master:BUILDING_ON_LINUX.md
 
-`cmake .. && make -j$(nproc)`
+### NixOS 18.09+
 
-### Using QMake
+Enter the development environment with all of the dependencies: `nix-shell -p openssl boost qt5.full pkg-config cmake`
 
-`qmake-qt5 .. && make -j$(nproc)`
+## Compile
 
-## NixOS 18.09+
+### Through Qt Creator
 
-1. Enter the development environment with all of the dependencies: `nix-shell -p openssl boost qt5.full pkg-config cmake`
-1. Go into the project directory
-1. Create a build folder and go into it (`mkdir build && cd build`)
-1. Use one of the options below to compile it
+1. Install C++ IDE Qt Creator by using `sudo apt install qtcreator`
+1. Open `CMakeLists.txt` with Qt Creator and select build
 
-### Using CMake
+## Manually
 
-`cmake .. && make`
-
-### Using QMake
-
-`qmake .. && make`
+1. In the project directory, create a build directory and enter it
+   ```sh
+   mkdir build
+   cd build
+   ```
+1. Generate build files
+   ```sh
+   cmake ..
+   ```
+1. Build the project
+   ```sh
+   make
+   ```
