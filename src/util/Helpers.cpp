@@ -80,6 +80,23 @@ QColor getRandomColor(const QString &userId)
     return TWITCH_USERNAME_COLORS[colorIndex];
 }
 
+QString secondsToStringDuration(qint64 seconds)
+{
+    // https://stackoverflow.com/a/39125329/7718197
+    const qint64 DAY = 86400;
+    qint64 days = seconds / DAY;
+    QTime t = QTime(0, 0).addSecs(seconds % DAY);
+    if (days > 1)
+        return QString("%1 days and %2 hours").arg(days).arg(t.hour());
+    else if (days == 1)
+        return QString("%1 day and %2 hours").arg(days).arg(t.hour());
+    else
+        return QString("%1 hours, %2 minutes, %3 seconds")
+            .arg(t.hour())
+            .arg(t.minute())
+            .arg(t.second());
+}
+
 QString formatUserMention(const QString &userName, bool isFirstWord,
                           bool mentionUsersWithComma)
 {

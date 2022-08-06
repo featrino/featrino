@@ -29,6 +29,9 @@ QString kFormatNumbers(const int &number);
 
 QColor getRandomColor(const QString &userId);
 
+/// Seconds int duration as "X days, X hours, X minutes, X seconds"
+QString secondsToStringDuration(qint64 seconds);
+
 /**
  * @brief Takes a user's name and some formatting parameter and spits out the standardized way to format it
  *

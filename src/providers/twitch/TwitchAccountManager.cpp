@@ -149,6 +149,7 @@ void TwitchAccountManager::load()
                 << "Twitch user updated to" << newUsername;
             getHelix()->update(user->getOAuthClient(), user->getOAuthToken());
             this->currentUser_ = user;
+            this->currentUser_->loadExpiresAt();
         }
         else
         {

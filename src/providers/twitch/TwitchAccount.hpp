@@ -88,6 +88,7 @@ public:
     const QString &getOAuthToken() const;
     const QString &getOAuthClient() const;
     const QString &getUserId() const;
+    const qint64 &getExpiresIn() const;
 
     QColor color();
     void setColor(QColor color);
@@ -101,6 +102,8 @@ public:
     bool setOAuthToken(const QString &newOAuthToken);
 
     bool isAnon() const;
+
+    void loadExpiresAt();
 
     void loadBlocks();
     void blockUser(QString userId, std::function<void()> onSuccess,
@@ -133,6 +136,7 @@ private:
     QString oauthToken_;
     QString userName_;
     QString userId_;
+    qint64 expiresIn;  // seconds
     const bool isAnon_;
     Atomic<QColor> color_;
 

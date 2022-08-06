@@ -17,7 +17,13 @@ AccountSwitchWidget::AccountSwitchWidget(QWidget *parent)
 
     for (const auto &userName : app->accounts->twitch.getUsernames())
     {
-        this->addItem(userName);
+        auto account = app->accounts->twitch.findUserByUsername(userName);
+        if (account == nullptr)
+            continue;
+        if (account->getExpiresIn() < 21600)  // 6 hours
+            this->addItem(userName + " (expired)");
+        else
+            this->addItem(userName);
     }
 
     app->accounts->twitch.userListUpdated.connect([=]() {
@@ -29,7 +35,13 @@ AccountSwitchWidget::AccountSwitchWidget(QWidget *parent)
 
         for (const auto &userName : app->accounts->twitch.getUsernames())
         {
-            this->addItem(userName);
+            auto account = app->accounts->twitch.findUserByUsername(userName);
+            if (account == nullptr)
+                continue;
+            if (account->getExpiresIn() < 21600)  // 6 hours
+                this->addItem(userName + " (expired)");
+            else
+                this->addItem(userName);
         }
 
         this->refreshSelection();
@@ -42,7 +54,7 @@ AccountSwitchWidget::AccountSwitchWidget(QWidget *parent)
     QObject::connect(this, &QListWidget::clicked, [=] {
         if (!this->selectedItems().isEmpty())
         {
-            QString newUsername = this->currentItem()->text();
+            QString newUsername = this->currentItem()->text().split(" ").at(0);
             if (newUsername.compare(ANONYMOUS_USERNAME_LABEL,
                                     Qt::CaseInsensitive) == 0)
             {
@@ -81,8 +93,7 @@ void AccountSwitchWidget::refreshSelection()
             const QString &currentUsername = currentUser->getUserName();
             for (int i = 0; i < this->count(); ++i)
             {
-                QString itemText = this->item(i)->text();
-
+                QString itemText = this->item(i)->text().split(" ").at(0);
                 if (itemText.compare(currentUsername, Qt::CaseInsensitive) == 0)
                 {
                     this->setCurrentRow(i);

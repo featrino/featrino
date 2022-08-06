@@ -32,11 +32,13 @@ TwitchAccount::TwitchAccount(const QString &username, const QString &oauthToken,
     , userId_(userID)
     , isAnon_(username == ANONYMOUS_USERNAME)
 {
+    this->loadExpiresAt();
 }
 
 QString TwitchAccount::toString() const
 {
-    return this->getUserName();
+    return this->getUserName() + " (expires in " +
+           secondsToStringDuration(this->expiresIn) + ")";
 }
 
 const QString &TwitchAccount::getUserName() const
@@ -57,6 +59,11 @@ const QString &TwitchAccount::getOAuthToken() const
 const QString &TwitchAccount::getUserId() const
 {
     return this->userId_;
+}
+
+const qint64 &TwitchAccount::getExpiresIn() const
+{
+    return this->expiresIn;
 }
 
 QColor TwitchAccount::color()
@@ -96,6 +103,39 @@ bool TwitchAccount::setOAuthToken(const QString &newOAuthToken)
 bool TwitchAccount::isAnon() const
 {
     return this->isAnon_;
+}
+
+void TwitchAccount::loadExpiresAt()
+{
+    // https://dev.twitch.tv/docs/authentication/validate-tokens
+    const QString baseUrl("https://id.twitch.tv/oauth2/validate");
+    NetworkRequest(baseUrl)
+        .timeout(5 * 1000)
+        .header("Accept", "application/json")
+        .header("Authorization", "OAuth " + this->oauthToken_)
+        .onSuccess([&](NetworkResult result) -> Outcome {
+            try
+            {
+                if (result.status() != 200)
+                {
+                    this->expiresIn = 0;
+                    return Failure;
+                }
+                auto root = result.parseJson();
+                this->expiresIn = root.value("expires_in").toInt();
+                return Success;
+            }
+            catch (const std::exception &ex)
+            {
+                this->expiresIn = 0;
+                return Failure;
+            }
+        })
+        .onError([&](auto /*result*/) -> Outcome {
+            this->expiresIn = 0;
+            return Failure;
+        })
+        .execute();
 }
 
 void TwitchAccount::loadBlocks()
