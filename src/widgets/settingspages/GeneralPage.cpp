@@ -187,6 +187,7 @@ void GeneralPage::initLayout(GeneralPageView &layout)
     tabDirectionDropdown->setMinimumWidth(
         tabDirectionDropdown->minimumSizeHint().width());
 
+    layout.addCheckbox("Show message reply button", s.showReplyButton);
     layout.addCheckbox("Show tab close button", s.showTabCloseButton);
     layout.addCheckbox("Always on top", s.windowTopMost);
 #ifdef USEWINSDK
@@ -664,6 +665,9 @@ void GeneralPage::initLayout(GeneralPageView &layout)
     layout.addCheckbox("Show parted users (< 1000 chatters)", s.showParts);
     layout.addCheckbox("Automatically close user popup when it loses focus",
                        s.autoCloseUserPopup);
+    layout.addCheckbox(
+        "Automatically close reply thread popup when it loses focus",
+        s.autoCloseThreadPopup);
     layout.addCheckbox("Lowercase domains (anti-phishing)", s.lowercaseDomains);
     layout.addCheckbox("Display 7TV Paints", s.displaySevenTVPaints);
     layout.addCheckbox("Bold @usernames", s.boldUsernames);
@@ -717,12 +721,11 @@ void GeneralPage::initLayout(GeneralPageView &layout)
     // TODO: Change phrasing to use better english once we can tag settings, right now it's kept as history instead of historical so that the setting shows up when the user searches for history
     layout.addIntInput("Max number of history messages to load on connect",
                        s.twitchMessageHistoryLimit, 10, 800, 10);
-    layout.addIntInput(
-        "Max number of messages for user chat logs (requires restart) ",
-        s.twitchMessageLogLimit, 1000, 100000, 1000);
-    layout.addIntInput(
-        "Max number of on-screen messages in a channel (requires restart) ",
-        s.twitchMessageOnScreenLimit, 1000, 100000, 1000);
+
+    layout.addIntInput("Max channel message scrollback (requires restart)",
+                       s.scrollbackOnScreenLimit, 1000, 100000, 1000);
+    layout.addIntInput("Max usercard chat log scrollback (requires restart)",
+                       s.scrollbackUsercardLogLimit, 1000, 100000, 1000);
 
     layout.addCheckbox("Enable experimental IRC support (requires restart)",
                        s.enableExperimentalIrc);
