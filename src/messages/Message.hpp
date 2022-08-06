@@ -42,6 +42,9 @@ enum class MessageFlag : uint32_t {
     ShowInMentions = (1 << 22),
     FirstMessage = (1 << 23),
     ReplyMessage = (1 << 24),
+    SevenTvEventApiAddEmoteMessage = (1 << 25),
+    SevenTvEventApiRemoveEmoteMessage = (1 << 26),
+    SevenTvEventApiUpdateEmoteMessage = (1 << 27),
 };
 using MessageFlags = FlagsEnum<MessageFlag>;
 
@@ -76,6 +79,7 @@ struct Message : boost::noncopyable {
     std::shared_ptr<MessageThread> replyThread;
     uint32_t count = 1;
     std::vector<std::unique_ptr<MessageElement>> elements;
+    std::vector<QString> seventvEventTargetEmotes;
 
     ScrollbarHighlight getScrollBarHighlight() const;
 };

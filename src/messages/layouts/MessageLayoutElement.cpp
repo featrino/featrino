@@ -19,7 +19,6 @@
 #include <QPainterPath>
 #include <QPixmap>
 
-
 namespace chatterino {
 
 const QRect &MessageLayoutElement::getRect() const

@@ -387,6 +387,7 @@ public:
 
     BoolSetting displaySevenTVAnimatedProfile = {
         "/misc/displaySevenTVAnimatedProfile", true};
+    BoolSetting enableSevenTVEventApi = {"/misc/enableSevenTVEventApi", true};
 
     IntSetting scrollbackOnScreenLimit = {
         "/misc/scrollbackOnScreenLimit",

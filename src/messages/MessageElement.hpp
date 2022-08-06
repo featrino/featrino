@@ -49,8 +49,8 @@ enum class MessageElementFlag : int64_t {
     FfzEmoteText = (1LL << 10),
     FfzEmote = FfzEmoteImage | FfzEmoteText,
 
-    SeventvEmoteImage = (1LL << 34),
-    SeventvEmoteText = (1LL << 35),
+    SeventvEmoteImage = (1LL << 41),
+    SeventvEmoteText = (1LL << 42),
     SeventvEmote = SeventvEmoteImage | SeventvEmoteText,
 
     EmoteImages =
