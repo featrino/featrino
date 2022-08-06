@@ -10,11 +10,11 @@ If the feature breaks, it will be reverted to ensure that the project doesn't fa
 
 ## Features
 
-- Longer message history for user logs
 - Faster startup for live status
 - 4x emote support for FFZ and 7TV
-- 7tv emote and animated profiles (from [chatterino7](https://github.com/SevenTV/chatterino7) commit [c74a082](https://github.com/SevenTV/chatterino7/commits/c74a0824e491e6f488f5f3ba5a83b89c4fded2e1)) 
-- Support for pinning of user popups
+- 7tv emote and animated profiles (from [chatterino7](https://github.com/SevenTV/chatterino7/tree/48d5a11686f1fb65d06545056beba3ea8feacc97)) 
+- Support for pinning of user popups (upstream pending)
+- Longer message history for user logs (upstream pending)
 
 
 
