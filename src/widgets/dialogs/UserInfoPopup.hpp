@@ -44,6 +44,7 @@ private:
     void installEvents();
     void updateUserData();
     void updateLatestMessages();
+    void updateFocusLoss();
 
     void loadAvatar(const HelixUser &user);
     void fetchSevenTVAvatar(const HelixUser &user);
