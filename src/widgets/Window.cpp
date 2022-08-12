@@ -667,6 +667,11 @@ void Window::onAccountSelected()
         {
             this->userLabel_->getLabel().setText("anonymous");
         }
+        else if (user->getExpiresIn() < 21600)  // 6 hours
+        {
+            this->userLabel_->getLabel().setText(user->getUserName() +
+                                                 " (expired)");
+        }
         else
         {
             this->userLabel_->getLabel().setText(user->getUserName());

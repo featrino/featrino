@@ -148,8 +148,8 @@ void TwitchAccountManager::load()
             qCDebug(chatterinoTwitch)
                 << "Twitch user updated to" << newUsername;
             getHelix()->update(user->getOAuthClient(), user->getOAuthToken());
+            user->loadExpiresAt();
             this->currentUser_ = user;
-            this->currentUser_->loadExpiresAt();
         }
         else
         {
