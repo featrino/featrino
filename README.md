@@ -1,4 +1,4 @@
-![alt text](resources/icon-64.png)
+![alt text](resources/icon.png)
 featrino
 ============
 
